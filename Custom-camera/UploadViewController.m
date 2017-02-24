@@ -8,12 +8,14 @@
 
 #import "UploadViewController.h"
 #import "ViewController.h"
+#define POST_BODY_BOURDARY  @"---------123456boundary"
 
 @interface UploadViewController ()
 
 @end
 
 @implementation UploadViewController
+@synthesize imagePreview, uploadProgressBar;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,7 +31,8 @@
 }
 
 - (IBAction)uploadAction:(id)sender {
-    [self saveInLocalDevice:_imagePreview.image];
+    [self saveInLocalDevice:imagePreview.image];
+    [self uploadAction:imagePreview.image];
     ViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"mainView"];
     [self presentViewController:viewController animated:YES completion:nil];
 }
@@ -62,12 +65,43 @@
 /*
  Generate unique path.
  */
-- (NSString *)generateUniquePath {
-    CFUUIDRef uuid;
-    CFStringRef uuidStr;
-    uuid = CFUUIDCreate(NULL);
-    uuidStr = CFUUIDCreateString(NULL, uuid);
-    return (__bridge NSString *)(uuidStr);
+- (NSNumber *)generateUniquePath {
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSNumber *timeStampObj = [NSNumber numberWithDouble: timeStamp];
+    return timeStampObj;
+}
+
+- (void)uploadImage:(UIImage *)image {
+    [uploadProgressBar setProgress:0.0 animated:NO];
+    NSURLSessionUploadTask *uploadTask;
+    NSURL *url = [NSURL URLWithString:@"https://framer-16ab8.firebaseio.com/aaa.json"];
+    if (uploadTask) {
+        NSLog(@"Wait for this process finish!");
+        return;
+    }
+    
+    NSString *imagepath = [[self applicationDocumentsDirectory].path stringByAppendingPathComponent:image];
+    NSURL *outputFileURL = [NSURL fileURLWithPath:imagepath];
+    
+    // Create the Request
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    // Configure the NSURL Session
+    NSURLSessionConfiguration *sessionConfig = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.sometihng.upload"];
+    
+    NSURLSession *upLoadSession = [NSURLSession sessionWithConfiguration:sessionConfig delegate:self delegateQueue:nil];
+    
+    // Define the Upload task
+    uploadTask = [upLoadSession uploadTaskWithRequest:request fromFile:outputFileURL];
+    
+    // Run it!
+    [uploadTask resume];
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
+    float progress = (float)totalBytesSent/(float)totalBytesExpectedToSend;
+    [uploadProgressBar setProgress:progress animated:YES];
 }
 
 /*

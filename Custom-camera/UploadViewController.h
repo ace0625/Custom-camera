@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UploadViewController : UIViewController 
+@interface UploadViewController : UIViewController<NSURLConnectionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate> {
+    NSURLConnection *connection;
+    NSURLSession *urlSession;
+//    NSURLSessionTask *uploadTask;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
 @property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)uploadAction:(id)sender;
 
-- (void)saveInLocalDevice:(UIImage *) image;
-- (NSString *)generateUniquePath;
+- (void)saveInLocalDevice:(UIImage *)image;
+- (void)uploadImage:(UIImage *)image;
+- (NSNumber *)generateUniquePath;
 @end

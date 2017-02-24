@@ -27,6 +27,8 @@
     NSError *error;
     NSString *imgFolderPath = [documentDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",customPath]];
     NSArray *paths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:imgFolderPath error:&error];
+    NSSortDescriptor *sortOrder = [NSSortDescriptor sortDescriptorWithKey: @"self" ascending:NO];
+    paths = [paths sortedArrayUsingDescriptors: [NSArray arrayWithObject:sortOrder]];
     for (NSURL *url in paths) {
         NSString *imgPath = [imgFolderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", url]];
         UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:imgPath]];
