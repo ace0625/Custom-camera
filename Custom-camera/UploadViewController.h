@@ -11,7 +11,7 @@
 @interface UploadViewController : UIViewController<NSURLConnectionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate> {
     NSURLConnection *connection;
     NSURLSession *urlSession;
-//    NSURLSessionTask *uploadTask;
+    NSURLSessionUploadTask *uploadTask;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
 @property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
@@ -21,4 +21,8 @@
 - (void)saveInLocalDevice:(UIImage *)image;
 - (void)uploadImage:(UIImage *)image;
 - (NSNumber *)generateUniquePath;
+- (NSData *)createBodyWithBoundary:(NSString *)boundary
+                             paths:(NSString *)path
+                         fieldName:(NSString *)fieldName;
+
 @end
