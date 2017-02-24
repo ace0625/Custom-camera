@@ -34,7 +34,7 @@
 		<string>armv7</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera Privacy</string>
+	<string>Camera Usage Description</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Photo Library Privacy</string>
 	<key>UISupportedInterfaceOrientations</key>
