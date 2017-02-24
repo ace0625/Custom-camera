@@ -85,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Upload View Controller-->
         <scene sceneID="Odi-w2-dHL">
             <objects>
-                <viewController id="yvi-MH-ngC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="uploadView" id="yvi-MH-ngC" customClass="UploadViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zoZ-s3-hxb"/>
                         <viewControllerLayoutGuide type="bottom" id="Sjq-sd-gTS"/>
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8m-fF-iFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="938.39999999999998" y="138.98050974512745"/>
+            <point key="canvasLocation" x="938" y="155"/>
         </scene>
     </scenes>
 </document>

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MainTableViewCell.h"
+#import "UploadViewController.h"
 
 @interface ViewController ()
 
@@ -18,6 +19,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Error?"
+                                      message:@"No camera!"
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* ok = [UIAlertAction
+                             actionWithTitle:@"OK"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+        [alert addAction:ok];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -53,15 +71,17 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    selectedImage = info[UIImagePickerControllerOriginalImage];
+    NSLog(@"end: %@", selectedImage.accessibilityPath);
+    UploadViewController *obj =[[UploadViewController alloc]initWithNibName:@"uploadView" bundle:nil];
+    [self.navigationController pushViewController:obj animated:YES];
+    [picker dismissViewControllerAnimated:YES completion:nil];
     
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    //send image here
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [self dismissViewControllerAnimated:YES completion:NULL];
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

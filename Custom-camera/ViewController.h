@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController<UITableViewDataSource, UITableViewDelegate,
 UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UIImagePickerController *imagePicker;
+    UIImage *selectedImage;
     NSMutableArray *dataList;
 }
 

@@ -14,6 +14,7 @@
 		AADA9D8B1E5FCB4F009A9681 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AADA9D8A1E5FCB4F009A9681 /* Assets.xcassets */; };
 		AADA9D8E1E5FCB4F009A9681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADA9D8C1E5FCB4F009A9681 /* LaunchScreen.storyboard */; };
 		AADA9D9B1E5FCDB6009A9681 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AADA9D9A1E5FCDB6009A9681 /* MainTableViewCell.m */; };
+		AADA9D9E1E5FEC51009A9681 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADA9D9D1E5FEC51009A9681 /* UploadViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		AADA9D8F1E5FCB4F009A9681 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AADA9D991E5FCDB6009A9681 /* MainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTableViewCell.h; sourceTree = "<group>"; };
 		AADA9D9A1E5FCDB6009A9681 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
+		AADA9D9C1E5FEC51009A9681 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
+		AADA9D9D1E5FEC51009A9681 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +115,8 @@
 				AADA9D851E5FCB4F009A9681 /* ViewController.m */,
 				AADA9D991E5FCDB6009A9681 /* MainTableViewCell.h */,
 				AADA9D9A1E5FCDB6009A9681 /* MainTableViewCell.m */,
+				AADA9D9C1E5FEC51009A9681 /* UploadViewController.h */,
+				AADA9D9D1E5FEC51009A9681 /* UploadViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				AADA9D861E5FCB4F009A9681 /* ViewController.m in Sources */,
 				AADA9D831E5FCB4F009A9681 /* AppDelegate.m in Sources */,
 				AADA9D9B1E5FCDB6009A9681 /* MainTableViewCell.m in Sources */,
+				AADA9D9E1E5FEC51009A9681 /* UploadViewController.m in Sources */,
 				AADA9D801E5FCB4F009A9681 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
