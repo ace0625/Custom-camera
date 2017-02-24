@@ -35,6 +35,15 @@
  Save in the local device
  */
 - (void)saveInLocalDevice:(UIImage *) image {
+    NSData *imgData = UIImagePNGRepresentation(image);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDir = [paths objectAtIndex:0];
+    NSString *imagePath = [documentDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", @"cached"]];
+    if (![imgData writeToFile:imagePath atomically:NO]) {
+        NSLog(@"Failed to cache");
+    } else {
+        NSLog(@"Success, path: %@", imagePath);
+    }
 }
 
 /*
