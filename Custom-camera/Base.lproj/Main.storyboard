@@ -88,7 +88,7 @@
         <!--Upload View Controller-->
         <scene sceneID="Odi-w2-dHL">
             <objects>
-                <viewController storyboardIdentifier="uploadView" id="yvi-MH-ngC" customClass="UploadViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="uploadView" storyboardIdentifier="uploadView" id="yvi-MH-ngC" customClass="UploadViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zoZ-s3-hxb"/>
                         <viewControllerLayoutGuide type="bottom" id="Sjq-sd-gTS"/>
@@ -109,15 +109,25 @@
                                 <rect key="frame" x="47" y="471" width="64" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelAction:" destination="yvi-MH-ngC" eventType="touchUpInside" id="d6E-hn-ahW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6E4-eI-SKA">
                                 <rect key="frame" x="278" y="471" width="54" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Upload"/>
+                                <connections>
+                                    <action selector="uploadAction:" destination="yvi-MH-ngC" eventType="touchUpInside" id="v7f-rA-vhd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="imagePreview" destination="Zaf-mg-AM0" id="upP-n7-KL1"/>
+                        <outlet property="uploadProgressBar" destination="iLH-em-m4e" id="TUx-4s-Yq1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D8m-fF-iFv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

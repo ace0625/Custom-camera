@@ -20,18 +20,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIAlertController * alert=   [UIAlertController
-                                      alertControllerWithTitle:@"Error?"
-                                      message:@"No camera!"
-                                      preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction* ok = [UIAlertAction
+        UIAlertController *alert = [UIAlertController
+                                   alertControllerWithTitle:@"Error"
+                                   message:@"No camera!"
+                                   preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction
                              actionWithTitle:@"OK"
                              style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action)
-                             {
+                             handler:^(UIAlertAction * action) {
                                  [alert dismissViewControllerAnimated:YES completion:nil];
-                                 
                              }];
         [alert addAction:ok];
         [self presentViewController:alert animated:YES completion:nil];
@@ -48,21 +45,13 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-
-- (IBAction)libraryAction:(id)sender {
-    imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.delegate = self;
-    imagePicker.allowsEditing = YES;
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:imagePicker animated:YES completion:NULL];
-}
-
+/*
+ Implement camera
+ */
 - (IBAction)cameraAction:(id)sender {
-    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker = [[UIImagePickerController alloc]init];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = NO;
     imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -70,18 +59,31 @@
     [self presentViewController:imagePicker animated:YES completion:NULL];
 }
 
+/*
+ Implement library photo
+ */
+- (IBAction)libraryAction:(id)sender {
+    imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:imagePicker animated:YES completion:NULL];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    selectedImage = info[UIImagePickerControllerOriginalImage];
-    NSLog(@"end: %@", selectedImage.accessibilityPath);
-    UploadViewController *obj =[[UploadViewController alloc]initWithNibName:@"uploadView" bundle:nil];
-    [self.navigationController pushViewController:obj animated:YES];
-    [picker dismissViewControllerAnimated:YES completion:nil];
-    
-    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        UploadViewController *uploadViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"uploadView"];
+        [self presentViewController:uploadViewController animated:YES completion:^{
+            selectedImage = [info valueForKey:UIImagePickerControllerOriginalImage];
+            uploadViewController.imagePreview.image = selectedImage;
+        }];
+    }];
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 @end

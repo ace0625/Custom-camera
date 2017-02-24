@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UploadViewController : UIViewController {
-    UIImage *uploadImage;
-}
+@interface UploadViewController : UIViewController 
+@property (weak, nonatomic) IBOutlet UIImageView *imagePreview;
+@property (weak, nonatomic) IBOutlet UIProgressView *uploadProgressBar;
+- (IBAction)cancelAction:(id)sender;
+- (IBAction)uploadAction:(id)sender;
 
 @end
