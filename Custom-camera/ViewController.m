@@ -19,28 +19,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        UIAlertController *alert = [UIAlertController
-                                   alertControllerWithTitle:@"Error"
-                                   message:@"No camera!"
-                                   preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction
-                             actionWithTitle:@"OK"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action) {
-                                 [alert dismissViewControllerAnimated:YES completion:nil];
-                             }];
-        [alert addAction:ok];
-        [self presentViewController:alert animated:YES completion:nil];
+
+    dataList = [[NSMutableArray alloc]init];
+    NSArray *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDir = [path objectAtIndex:0];
+    NSString *customPath = @"MyFolder/";
+    NSError *error;
+    NSString *imgFolderPath = [documentDir stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",customPath]];
+    NSArray *paths = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:imgFolderPath error:&error];
+    for (NSURL *url in paths) {
+        NSString *imgPath = [imgFolderPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@", url]];
+        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfFile:imgPath]];
+        [dataList addObject:image];
     }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return dataList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    MainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainCell" forIndexPath:indexPath];
+    cell.imageView.image = [dataList objectAtIndex:indexPath.row];
+
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +67,7 @@
 - (IBAction)libraryAction:(id)sender {
     imagePicker = [[UIImagePickerController alloc]init];
     imagePicker.delegate = self;
-    imagePicker.allowsEditing = YES;
+    imagePicker.allowsEditing = NO;
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController:imagePicker animated:YES completion:NULL];

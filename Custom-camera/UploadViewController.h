@@ -15,4 +15,5 @@
 - (IBAction)uploadAction:(id)sender;
 
 - (void)saveInLocalDevice:(UIImage *) image;
+- (NSString *)generateUniquePath;
 @end

@@ -15,6 +15,10 @@
 		AADA9D8E1E5FCB4F009A9681 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AADA9D8C1E5FCB4F009A9681 /* LaunchScreen.storyboard */; };
 		AADA9D9B1E5FCDB6009A9681 /* MainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AADA9D9A1E5FCDB6009A9681 /* MainTableViewCell.m */; };
 		AADA9D9E1E5FEC51009A9681 /* UploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AADA9D9D1E5FEC51009A9681 /* UploadViewController.m */; };
+		AADA9DA21E6016AB009A9681 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = AADA9D9F1E6016AB009A9681 /* camera.png */; };
+		AADA9DA31E6016AB009A9681 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AADA9DA01E6016AB009A9681 /* camera@2x.png */; };
+		AADA9DA41E6016AB009A9681 /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AADA9DA11E6016AB009A9681 /* camera@3x.png */; };
+		AADA9DA61E6016CE009A9681 /* cameraSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = AADA9DA51E6016CE009A9681 /* cameraSound.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		AADA9D9A1E5FCDB6009A9681 /* MainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTableViewCell.m; sourceTree = "<group>"; };
 		AADA9D9C1E5FEC51009A9681 /* UploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadViewController.h; sourceTree = "<group>"; };
 		AADA9D9D1E5FEC51009A9681 /* UploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadViewController.m; sourceTree = "<group>"; };
+		AADA9D9F1E6016AB009A9681 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		AADA9DA01E6016AB009A9681 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		AADA9DA11E6016AB009A9681 /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@3x.png"; sourceTree = "<group>"; };
+		AADA9DA51E6016CE009A9681 /* cameraSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = cameraSound.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,10 @@
 		AADA9D951E5FCB57009A9681 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AADA9DA51E6016CE009A9681 /* cameraSound.wav */,
+				AADA9D9F1E6016AB009A9681 /* camera.png */,
+				AADA9DA01E6016AB009A9681 /* camera@2x.png */,
+				AADA9DA11E6016AB009A9681 /* camera@3x.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -180,8 +192,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AADA9DA61E6016CE009A9681 /* cameraSound.wav in Resources */,
 				AADA9D8E1E5FCB4F009A9681 /* LaunchScreen.storyboard in Resources */,
+				AADA9DA31E6016AB009A9681 /* camera@2x.png in Resources */,
+				AADA9DA41E6016AB009A9681 /* camera@3x.png in Resources */,
 				AADA9D8B1E5FCB4F009A9681 /* Assets.xcassets in Resources */,
+				AADA9DA21E6016AB009A9681 /* camera.png in Resources */,
 				AADA9D891E5FCB4F009A9681 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
