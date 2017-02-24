@@ -14,4 +14,5 @@
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)uploadAction:(id)sender;
 
+- (void)saveInLocalDevice:(UIImage *) image;
 @end

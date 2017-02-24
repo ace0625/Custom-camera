@@ -28,6 +28,13 @@
 }
 
 - (IBAction)uploadAction:(id)sender {
+    [self saveInLocalDevice:_imagePreview.image];
+}
+
+/*
+ Save in the local device
+ */
+- (void)saveInLocalDevice:(UIImage *) image {
 }
 
 /*
