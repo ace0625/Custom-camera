@@ -74,6 +74,9 @@
     return timeStampObj;
 }
 
+/*
+ Upload Image.
+ */
 - (void)uploadImage:(UIImage *)image {
     [uploadProgressBar setProgress:0.0 animated:NO];
    
@@ -113,8 +116,7 @@
 
 - (NSData *)createBodyWithBoundary:(NSString *)boundary
                              paths:(NSString *)path
-                         fieldName:(NSString *)fieldName
-{
+                         fieldName:(NSString *)fieldName {
     NSMutableData *httpBody = [NSMutableData data];
     NSString *filename  = [path lastPathComponent];
     NSData   *data      = [NSData dataWithContentsOfFile:path];
@@ -131,21 +133,13 @@
     return httpBody;
 }
 
+
+/*
+ Track the process of upload and show in the progress bar.
+ */
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
     float progress = (float)totalBytesSent/(float)totalBytesExpectedToSend;
     [uploadProgressBar setProgress:progress animated:YES];
 }
-                                                        
-                                                        
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
